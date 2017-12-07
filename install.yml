@@ -2,6 +2,8 @@
 - hosts: all
   become: True
   tasks:
+    - name: Configure dpkg
+      raw: sudo dpkg --configure -a
     - name: Install Maven
       raw: apt-get install -y maven
         
