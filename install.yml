@@ -3,5 +3,5 @@
   become: True
   tasks:
     - name: Install Maven
-      apt: name=maven state=present
+      raw: apt-get install -y maven
         
