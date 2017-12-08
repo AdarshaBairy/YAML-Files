@@ -1,14 +1,22 @@
-- hosts: local
-  gather_facts: false
-  connection: local
-  become: True
-  ec2:
+- name: Create an instance
+  hosts: localhost
+  gather_facts: False
+  vars:
     key_name: aws
     instance_type: t2.micro
+    security_group: ansible-provision
     image: ami-25cf1c5d
-    wait: yes
-    group: webserver
-    count: 1
-    vpc_subnet_id: subnet-07f7ba5f
-    assign_public_ip: yes
-  
+    region: us-west-2
+  tasks:
+    - name: Launch instance
+      ec2:
+         key_name: "{{ keypair }}"
+         group: "{{ security_group }}"
+         instance_type: "{{ instance_type }}"
+         image: "{{ image }}"
+         wait: true
+         region: "{{ region }}"
+         vpc_subnet_id: subnet-07f7ba5f
+         assign_public_ip: yes
+      register: ec2
+
