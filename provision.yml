@@ -1,0 +1,14 @@
+- hosts: local
+  gather_facts: false
+  connection: local
+  become: True
+  ec2:
+    key_name: aws
+    instance_type: t2.micro
+    image: ami-25cf1c5d
+    wait: yes
+    group: webserver
+    count: 1
+    vpc_subnet_id: subnet-07f7ba5f
+    assign_public_ip: yes
+  
