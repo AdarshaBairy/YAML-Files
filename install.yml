@@ -6,4 +6,6 @@
       raw: sudo dpkg --configure -a
     - name: Install Maven
       raw: apt-get install -y maven
+  roles:
+    - geerlingguy.java
         
