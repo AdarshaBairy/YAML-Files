@@ -7,5 +7,5 @@
     - name: Install Maven
       raw: apt-get install -y maven
   roles:
-    - geerlingguy.java
+    - geerlingguy.jenkins
         
